@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommendation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 1em 0;
+            text-align: center;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .video-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .video-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        .thumbnail {
+            width: 100%;
+            height: auto;
+        }
+        .video-info {
+            padding: 15px;
+        }
+        .video-title {
+            font-size: 1.2em;
+            margin: 0 0 10px;
+        }
+        .video-description {
+            color: #666;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Watch one and you'll be better</h1>
+    </header>
+    <div class="container" id="video-container">
+        <!-- Dynamic video cards will be appended here -->
+    </div>
+
+    <script>
+        // Example video data
+        const videos = [
+            {
+                title: "Self Mastery",
+                thumbnail: "https://i.ytimg.com/vi/kL2QkfhGhcc/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCTRJkkMhn6VD2XhL_topDS7CKvQg",
+                description: "Master yourself.",
+                url: "https://www.youtube.com/watch?v=kL2QkfhGhcc&t=80s"
+            },
+            {
+                title: "How to grow deeply happy | Jonny Thomson",
+                thumbnail: "https://i.ytimg.com/an_webp/2WShJeNX7W8/mqdefault_6s.webp?du=3000&sqp=CPjNtbsG&rs=AOn4CLBY6kt3FV7HP6fu5DLyUpXdSyVXAA",
+                description: "How to grow deeply happy | Jonny Thomson.",
+                url: "https://youtu.be/2WShJeNX7W8?si=MIDv5A11FQduns77"
+            },
+            {
+                title: "How to Use Writing to Sharpen Your Thinking | Tim Ferriss",
+                thumbnail: "https://i.ytimg.com/vi/65U5byDZ55M/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBehcSPQwzhdt6M2LRySqKvKOf7jA",
+                description: "How to Use Writing to Sharpen Your Thinking | Tim Ferriss.",
+                url: "https://www.youtube.com/watch?v=65U5byDZ55M"
+            },
+            {
+                title: "How to cure brain rot",
+                thumbnail: "https://i.ytimg.com/vi/GCvAfdNowzU/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLDWmEUFJlWesUK8mffrvqb7TWJ4GQ",
+                description: "How to cure brain rot",
+                url: "https://www.youtube.com/watch?v=GCvAfdNowzU"
+            }
+        ];
+
+        const container = document.getElementById('video-container');
+
+        videos.forEach(video => {
+            const card = document.createElement('div');
+            card.className = 'video-card';
+
+            card.innerHTML = `
+                <a href="${video.url}" target="_blank">
+                    <img class="thumbnail" src="${video.thumbnail}" alt="${video.title}">
+                </a>
+                <div class="video-info">
+                    <h2 class="video-title">${video.title}</h2>
+                    <p class="video-description">${video.description}</p>
+                </div>
+            `;
+
+            container.appendChild(card);
+        });
+    </script>
+</body>
+</html>
